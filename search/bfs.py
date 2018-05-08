@@ -1,18 +1,19 @@
 from .utils import Node
+from collections import deque
 
 visited = set()
+queue = deque()
 
-def dfs(nroot):
-    stack = []
-    stack.append(nroot)
-    while stack:
-        current_node = stack.pop()
+def bfs(nroot):
+    queue.appendleft(nroot)
+    while queue:
+        current_node = queue.pop()
         print(current_node.mesg)
         visited.add(current_node._id)
         if current_node.nodes:
             for node in current_node.nodes:
-                if not node._id in visited:
-                    stack.append(node)
+                if node._id not in visited:
+                    queue.appendleft(node)
 
 
 if __name__ == '__main__':
@@ -21,4 +22,4 @@ if __name__ == '__main__':
     root.nodes[0].add_childs([Node(4), Node(5)])
     root.nodes[1].add_childs([Node(6), Node(7)])
     root.nodes[2].add_childs([Node(8), Node(9)])
-    dfs(root)
+    bfs(root)
