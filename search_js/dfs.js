@@ -4,15 +4,15 @@ var visited = new Set();
 
 
 function bfs(nroot) {
-    queue.push(nroot);
-    while (queue.length != 0) {
-        current_node = queue.shift();
+    stack.push(nroot);
+    while (stack.length != 0) {
+        current_node = stack.pop();
         console.log(current_node.name);
         visited.add(current_node);
         if (current_node.nodes.length != 0) {
             for (node of current_node.nodes) {
                 if (!visited.has(node._id)) {
-                    queue.push(node);
+                    stack.push(node);
                 }
             }
         }
