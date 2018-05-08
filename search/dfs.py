@@ -1,10 +1,16 @@
 
+visited = set()
+
 class Node:
-    def __init__(self, mesg, left_node=None, right_node=None):
+    _id = 0
+    def __init__(self, mesg, nodes=None):
         self.mesg = mesg
+        self.nodes = [] if nodes is None else nodes
+        self._id = Node._id
+        Node._id += 1
 
     def add_childs(self, nodes):
-        self.nodes = nodes
+        self.nodes.extend(nodes)
 
 def dfs(nroot):
     stack = []
@@ -12,10 +18,17 @@ def dfs(nroot):
     while stack:
         current_node = stack.pop()
         print(current_node.mesg)
-        if current_node.left_node:
-            stack.append(current_node.left_node)
-        if current_node.right_node:
-            stack.append(current_node.right_node)
+        visited.add(current_node._id)
+        if current_node.nodes:
+            for node in current_node.nodes:
+                if not node._id in visited:
+                    stack.append(node)
+
 
 if __name__ == '__main__':
-    root = Node('root')
+    root = Node(0)
+    root.add_childs([Node(1), Node(2), Node(3)])
+    root.nodes[0].add_childs([Node(4), Node(5)])
+    root.nodes[1].add_childs([Node(6), Node(7)])
+    root.nodes[2].add_childs([Node(8), Node(9)])
+    dfs(root)
