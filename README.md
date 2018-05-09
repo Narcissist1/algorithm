@@ -7,6 +7,7 @@ implement different algorithms in Python, or maybe JavaScript
 * Buble sort
 * Heap sort
 * Merge sort
+* insertion sort
 
 ## search
 
