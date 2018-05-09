@@ -2,7 +2,7 @@ var arr = [21, 75, 40, 89, 72, 2, 45, 32, 28, 7, 56, 58, 60, 64, 50];
 
 
 function merge(la, lb) {
-    tmp = [];
+    var tmp = [];
     while (la.length > 0 || lb.length > 0) {
         if (la.length === 0) {
             tmp = tmp.concat(lb);
@@ -28,6 +28,6 @@ function divide(a) {
 }
 
 (function main() {
-    res = divide(arr);
+    var res = divide(arr);
     console.log(res);
 })();
