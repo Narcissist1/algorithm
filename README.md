@@ -3,12 +3,12 @@ algorithm script
 
 implement different algorithms in Python, or maybe JavaScript
 
-# sort
+## sort
 * Buble sort
 * Heap sort
 * Merge sort
 
-# search
+## search
 
 * Depth-first search
 * Breadth-first search
